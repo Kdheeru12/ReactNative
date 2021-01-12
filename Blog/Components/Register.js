@@ -1,18 +1,48 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   StyleSheet,
   Dimensions,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  TouchableOpacityComponent
 } from 'react-native';
 import { Block, Checkbox, Text, Button as GaButton, theme,Icon,Button } from 'galio-framework';
 import nowTheme from '../Themes'
 import Input from './Input';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { AxiosSend } from '../Users/AxiosSend';
 const { width, height } = Dimensions.get('screen');
-export default function App() {
+export default function Register({navigation}) {
   console.log('hello');
+  const [email, setEmail] = useState('');
+  const [password, setpassword] = useState('')
+
+  // const Submit = (e) =>{
+  //   e.preventDefault();
+  //   //console.log(data);
+  //   AxiosSend.post(`users/reg`,{
+  //     // email:data.email,
+  //     // username:data.username,
+  //     // password:data.password,
+  //   })
+  //   .then((res) =>{
+  //     history.push('/login')
+  //   })
+  //   .catch(error =>{
+  //     if (typeof error.response === 'undefined') {
+        
+  //       return Promise.reject(error);
+  //     }
+  //     else{
+  //     seterror({
+  //       username:error.response.data.username,
+  //       password:error.response.data.password,
+  //       email:error.response.data.email,
+  //     })
+  //     }  
+  //   })
+  // }
   return (
     // <Block style={styles.container}>
     //   <Input placeholder="First Name"
@@ -96,7 +126,7 @@ export default function App() {
                               placeholder="First Name"
                               
                               style={styles.inputs}
-                 
+
                             />
                           </Block>
                           <Block width={width * 0.8} style={{ marginBottom: 5 }}>
@@ -119,19 +149,13 @@ export default function App() {
                             row
                             width={width * 0.75}
                           >
-                            <Checkbox
-                              checkboxStyle={{
-                                borderWidth: 1,
-                                borderRadius: 2,
-                                borderColor: '#E3E3E3'
-                              }}
-                              color={nowTheme.COLORS.PRIMARY}
-                              labelStyle={{
-                                color: nowTheme.COLORS.HEADER,
-                                // fontFamily: 'montserrat-regular'
-                              }}
-                              label="I agree to the terms and conditions."
-                            />
+                            <TouchableOpacity onPress={() =>{
+                              navigation.navigate('Login')
+                            }}>
+                              <Text style={{marginLeft:30}}>
+                                already have an account login
+                              </Text>
+                            </TouchableOpacity>
                           </Block>
                         </Block>
                         <Block center>

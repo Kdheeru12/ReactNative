@@ -12,7 +12,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Ionicons } from '@expo/vector-icons';
 
 const { width, height } = Dimensions.get('screen');
-export default function App() {
+export default function Login() {
   console.log('hello');
   const [email, setEmail] = useState('');
   const [password, setpassword] = useState('');
